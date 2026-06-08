@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spice Garden Restaurant | Authentic Indian Cuisine</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff8f0;
+      color: #2c1810;
+    }
+
+    /* Header */
+    header {
+      background: #8B1E1E;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #FFD700;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #FFD700;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      border-radius: 20px;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: #FFD700;
+      color: #8B1E1E;
+      border: none;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #FFC107;
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #FFD700;
+      color: #FFD700;
+    }
+
+    .btn-outline:hover {
+      background: #FFD700;
+      color: #8B1E1E;
+    }
+
+    /* Category Sections */
+    .category {
+      margin: 50px 0;
+    }
+
+    .category-title {
+      font-size: 36px;
+      color: #8B1E1E;
+      border-left: 5px solid #FFD700;
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .menu-card h3 {
+      color: #8B1E1E;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .menu-card p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c1810;
+    }
+
+    .order-btn {
+      background: #8B1E1E;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .order-btn:hover {
+      background: #6B1515;
+    }
+
+    /* Special Offer */
+    .offer {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      padding: 40px;
+      text-align: center;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .offer h2 {
+      font-size: 32px;
+      color: #8B1E1E;
+    }
+
+    /* About Section */
+    .about {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .about h2 {
+      color: #8B1E1E;
+      margin-bottom: 20px;
+    }
+
+    /* Contact */
+    .contact {
+      background: #2c1810;
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .contact h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-content h2 {
+      color: #8B1E1E;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input,
+    .modal-content select,
+    .modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .close {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: #8B1E1E;
+    }
+
+    footer {
+      background: #2c1810;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 10px;
+      }
+      .category-title {
+        font-size: 28px;
+      }
+    }
+
+    .cart-badge {
+      background: #FFD700;
+      color: #8B1E1E;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Spice <span>Garden</span> 🍛</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#starters">Starters</a>
+    <a href="#biryanis">Biryani</a>
+    <a href="#veg">Veg Items</a>
+    <a href="#meals">Full Meals</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+      <h1>Authentic Indian Flavors</h1>
+      <p>Experience the rich taste of traditional Indian cuisine</p>
+      <button onclick="openOrderModal()">🍽️ Order Online</button>
+      <button class="btn-outline" onclick="scrollToMenu()">📜 View Full Menu</button>
+    </div>
+
+    <!-- Special Offer Banner -->
+    <div class="offer">
+      <h2>🎉 Special Offer!</h2>
+      <p style="font-size: 20px; margin-top: 10px;">Get 20% off on orders above ₹500 | Free delivery on orders above ₹800</p>
+    </div>
+
+    <!-- Starters Section -->
+    <div class="category" id="starters">
+      <h2 class="category-title">🔥 Starters & Appetizers</h2>
+      <div class="menu-grid" id="startersGrid"></div>
+    </div>
+
+    <!-- Biryani Section -->
+    <div class="category" id="biryanis">
+      <h2 class="category-title">🍚 Biryanis (Signature Dishes)</h2>
+      <div class="menu-grid" id="biryanisGrid"></div>
+    </div>
+
+    <!-- Veg Items Section -->
+    <div class="category" id="veg">
+      <h2 class="category-title">🥬 Vegetarian Delights</h2>
+      <div class="menu-grid" id="vegGrid"></div>
+    </div>
+
+    <!-- Full Meals Section -->
+    <div class="category" id="meals">
+      <h2 class="category-title">🍛 Full Meals (Thali)</h2>
+      <div class="menu-grid" id="mealsGrid"></div>
+    </div>
+
+    <!-- Desserts Section -->
+    <div class="category" id="desserts">
+      <h2 class="category-title">🍨 Desserts</h2>
+      <div class="menu-grid" id="dessertsGrid"></div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about">
+      <h2>Our Story</h2>
+      <p style="font-size: 18px; line-height: 1.6;">Since 2010, Spice Garden has been serving authentic Indian cuisine made with love and traditional recipes. Our chefs use fresh ingredients and secret family spices to create unforgettable dining experiences.</p>
+      <p style="margin-top: 20px;">✓ 100% Pure Vegetarian & Non-Vegetarian options<br>✓ Family-friendly atmosphere<br>✓ Party hall available for events<br>✓ Home delivery available</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+      <h2>📍 Visit Us</h2>
+      <p>🏠 123 Food Street, Indiranagar, Bengaluru - 560038</p>
+      <p>📞 +91 98765 43210 | +91 87654 32109</p>
+      <p>⏰ Mon-Sun: 11:00 AM - 11:00 PM</p>
+      <p>📧 order@spicegarden.com</p>
+      <button onclick="openOrderModal()" style="margin-top: 20px;">📞 Order Now</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Spice Garden Restaurant | Authentic Indian Cuisine</p>
+  <p style="margin-top: 10px;">Follow us: Facebook | Instagram | Twitter</p>
+</footer>
+
+<!-- Order Modal -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeOrderModal()">&times;</span>
+    <h2>📝 Place Your Order</h2>
+    <form id="orderForm">
+      <select id="itemSelect" required>
+        <option value="">Select an item</option>
+      </select>
+      <input type="number" id="quantity" value="1" min="1" placeholder="Quantity">
+      <input type="text" id="customerName" placeholder="Your name" required>
+      <input type="tel" id="phone" placeholder="Phone number" required>
+      <textarea id="address" rows="3" placeholder="Delivery address" required></textarea>
+      <select id="paymentMethod">
+        <option value="Cash">Cash on Delivery</option>
+        <option value="Card">Card Payment</option>
+        <option value="UPI">UPI (Google Pay/PhonePe)</option>
+      </select>
+      <textarea id="notes" rows="2" placeholder="Special instructions (spice level, allergies, etc.)"></textarea>
+      <button type="submit" style="width: 100%;">✅ Confirm Order</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Complete Restaurant Menu Data
+  const menuData = {
+    starters: [
+      { name: "Chicken 65", price: "₹250", desc: "Spicy deep-fried chicken with curry leaves" },
+      { name: "Prawn Fry", price: "₹320", desc: "Crispy fried prawns with Indian spices" },
+      { name: "Paneer Tikka", price: "₹220", desc: "Grilled cottage cheese with bell peppers" },
+      { name: "Gobi Manchurian", price: "₹180", desc: "Crispy cauliflower in Indo-Chinese sauce" },
+      { name: "Spring Rolls", price: "₹160", desc: "Crispy rolls with mixed vegetables" },
+      { name: "Mushroom Chilli", price: "₹200", desc: "Spicy mushroom starter" }
+    ],
+    biryanis: [
+      { name: "Chicken Biryani", price: "₹280", desc: "Fragrant basmati rice with tender chicken (served with raita)" },
+      { name: "Mutton Biryani", price: "₹350", desc: "Slow-cooked mutton with aromatic spices" },
+      { name: "Prawn Biryani", price: "₹380", desc: "Delicious prawns layered with seasoned rice" },
+      { name: "Vegetable Biryani", price: "₹220", desc: "Mixed vegetables with basmati rice" },
+      { name: "Egg Biryani", price: "₹200", desc: "Eggs cooked in spicy biryani masala" },
+      { name: "Family Pack Biryani", price: "₹850", desc: "Serves 4 - Choose chicken or mutton" }
+    ],
+    veg: [
+      { name: "Paneer Butter Masala", price: "₹240", desc: "Cottage cheese in rich tomato gravy" },
+      { name: "Dal Makhani", price: "₹180", desc: "Black lentils simmered overnight" },
+      { name: "Shahi Paneer", price: "₹260", desc: "Royal paneer in creamy nut gravy" },
+      { name: "Mix Veg Curry", price: "₹200", desc: "Assorted vegetables in thick gravy" },
+      { name: "Aloo Gobi", price: "₹160", desc: "Potato and cauliflower stir-fry" },
+      { name: "Palak Paneer", price: "₹220", desc: "Paneer in spinach gravy" }
+    ],
+    meals: [
+      { name: "Veg Thali", price: "₹180", desc: "Rice, 2 curries, dal, chapati, pickle, papad" },
+      { name: "Non-Veg Thali", price: "₹240", desc: "Rice, chicken curry, egg curry, dal, chapati" },
+      { name: "Special Meals", price: "₹320", desc: "Biryani, chicken fry, raita, gulab jamun" },
+      { name: "South Indian Meals", price: "₹160", desc: "Sambar rice, rasam, poriyal, appalam" },
+      { name: "Family Thali (Serves 2)", price: "₹450", desc: "3 curries, 2 biryani, 8 chapati, dessert" }
+    ],
+    desserts: [
+      { name: "Gulab Jamun", price: "₹80", desc: "2 pieces - Soft milk dumplings in sugar syrup" },
+      { name: "Rasmalai", price: "₹120", desc: "Saffron flavored milk with cheese patties" },
+      { name: "Ice Cream", price: "₹70", desc: "Vanilla/Chocolate/Strawberry" },
+      { name: "Falooda", price: "₹150", desc: "Rose syrup, vermicelli, basil seeds, ice cream" }
+    ]
+  };
+
+  // Display all menu sections
+  function displayMenu() {
+    // Starters
+    displaySection('startersGrid', menuData.starters);
+    // Biryanis
+    displaySection('biryanisGrid', menuData.biryanis);
+    // Veg
+    displaySection('vegGrid', menuData.veg);
+    // Meals
+    displaySection('mealsGrid', menuData.meals);
+    // Desserts
+    displaySection('dessertsGrid', menuData.desserts);
+  }
+
+  function displaySection(gridId, items) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    grid.innerHTML = '';
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+      card.innerHTML = `
+        <h3>${item.name}</h3>
+        <p>${item.desc}</p>
+        <div class="price">${item.price}</div>
+        <button class="order-btn" onclick="openOrderModalWithItem('${item.name} - ${item.price}')">Order Now</button>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Fill dropdown with all items
+  function fillDropdown() {
+    const select = document.getElementById('itemSelect');
+    select.innerHTML = '<option value="">Select an item</option>';
+    
+    const allItems = [
+      ...menuData.starters, ...menuData.biryanis, 
+      ...menuData.veg, ...menuData.meals, ...menuData.desserts
+    ];
+    
+    allItems.forEach(item => {
+      const option = document.createElement('option');
+      option.value = `${item.name} - ${item.price}`;
+      option.textContent = `${item.name} - ${item.price}`;
+      select.appendChild(option);
+    });
+  }
+
+  let selectedItemPreset = '';
+
+  function openOrderModal() {
+    selectedItemPreset = '';
+    document.getElementById('orderModal').style.display = 'flex';
+  }
+
+  function openOrderModalWithItem(itemName) {
+    selectedItemPreset = itemName;
+    document.getElementById('orderModal').style.display = 'flex';
+    const select = document.getElementById('itemSelect');
+    for(let i = 0; i < select.options.length; i++) {
+      if(select.options[i].value === itemName) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  function closeOrderModal() {
+    document.getElementById('orderModal').style.display = 'none';
+    document.getElementById('orderForm').reset();
+  }
+
+  // Handle order submission
+  document.getElementById('orderForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const item = document.getElementById('itemSelect').value;
+    const quantity = document.getElementById('quantity').value;
+    const name = document.getElementById('customerName').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const notes = document.getElementById('notes').value;
+    
+    if(!item || !name || !phone || !address) {
+      alert('Please fill all required fields');
+      return;
+    }
+    
+    // Extract price from item string
+    const priceMatch = item.match(/₹(\d+)/);
+    const itemPrice = priceMatch ? parseInt(priceMatch[1]) : 0;
+    const totalAmount = itemPrice * parseInt(quantity);
+    
+    const orderData = {
+      item: item,
+      quantity: quantity,
+      customer: name,
+      phone: phone,
+      address: address,
+      payment_method: paymentMethod,
+      special_notes: notes,
+      total_amount: totalAmount,
+      order_source: 'website',
+      created_at: new Date().toISOString()
+    };
+    
+    // Send to backend
+    try {
+      const response = await fetch('http://localhost:5000/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData)
+      });
+      
+      if(response.ok) {
+        alert(`✅ Order placed successfully!\nItem: ${item}\nQuantity: ${quantity}\nTotal: ₹${totalAmount}\nWe will deliver to: ${address}`);
+        closeOrderModal();
+      } else {
+        throw new Error('Backend error');
+      }
+    } catch(error) {
+      // Save locally if backend not running
+      let orders = JSON.parse(localStorage.getItem('restaurant_orders') || '[]');
+      orders.push({...orderData, id: Date.now()});
+      localStorage.setItem('restaurant_orders', JSON.stringify(orders));
+      alert(`✅ Order saved! Total: ₹${totalAmount}\nWe will contact you shortly.`);
+      closeOrderModal();
+    }
+  });
+
+  function scrollToMenu() {
+    document.getElementById('starters').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Close modal on outside click
+  window.onclick = function(event) {
+    const modal = document.getElementById('orderModal');
+    if(event.target === modal) {
+      closeOrderModal();
+    }
+  }
+
+  displayMenu();
+  fillDropdown();
+</script>
+
+</body>
+</html>
