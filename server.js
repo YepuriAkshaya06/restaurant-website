@@ -14,7 +14,25 @@ const ORDERS_FILE = path.join(__dirname, 'restaurant_orders.json');
 if (!fs.existsSync(ORDERS_FILE)) {
   fs.writeFileSync(ORDERS_FILE, JSON.stringify([]));
 }
-
+// Welcome route for root URL - fixes "Cannot GET /" error
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to Spice Garden Restaurant API! 🍛',
+    status: '✅ Server is running successfully',
+    documentation: {
+      endpoints: {
+        'GET /': 'This welcome message',
+        'GET /api/orders': 'Get all customer orders',
+        'POST /api/orders': 'Create a new order',
+        'PATCH /api/orders/:id': 'Update order status'
+      },
+      frontend: 'https://unique-choux-e1c59c.netlify.app',
+      github: 'https://github.com/YepuriAkshaya06/restaurant-website',
+      instructions: 'Use POST requests to /api/orders to place orders'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
 // Get all orders
 app.get('/api/orders', (req, res) => {
   const orders = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf-8'));
