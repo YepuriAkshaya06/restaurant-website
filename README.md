@@ -1,17 +1,21 @@
 🍛 Spice Garden – Restaurant Online Ordering System
 
 Spice Garden is a full-stack restaurant management and online ordering platform designed to help local restaurants digitize their operations and reduce dependency on third-party delivery apps. The application enables restaurants to showcase their complete menu, accept direct online orders, collect customer delivery details, and manage order statuses through a simple and efficient interface. Built using HTML5, CSS3, JavaScript, Node.js, Express.js, and JSON file storage, Spice Garden demonstrates modern web development practices including RESTful API architecture, client-server communication, responsive design, and production deployment.
+
 ---------------------------------------------------------------------------------------------------------------------------------
 🚀 Live Demo
 
 Frontend: https://unique-choux-e1c59c.netlify.app/
+
 Backend API: https://restaurant-website-eqzh.onrender.com
+
 ---------------------------------------------------------------------------------------------------------------------------------
 📖 Project Overview
 
 Managing restaurant orders manually can be time-consuming and prone to errors. Local restaurants lose 25-30% of their revenue to third-party delivery platforms like Zomato and Swiggy. Customers cannot see the full menu online, and restaurant owners have no direct access to customer data.
 Spice Garden provides a digital solution that helps restaurants display their complete menu, accept direct online orders, collect delivery addresses, and save all order data – all with zero commission fees.
 The platform focuses on helping local restaurants grow their online presence, reduce dependency on third-party delivery apps, build direct relationships with their customers, and increase average order value through complete menu visibility.
+
 ----------------------------------------------------------------------------------------------------------------------------------
 ✨ Features
 
@@ -68,6 +72,7 @@ Responsive and lightweight frontend experience.
 Direct online orders with 0% commission fees.
 Restaurants save 25-30% compared to delivery platforms.
 Complete revenue retention for restaurant owners.
+
 ----------------------------------------------------------------------------------------------------------------------------------
 🛠️ Technology Stack
 
@@ -90,6 +95,7 @@ Complete revenue retention for restaurant owners.
 ##Version Control
 -Git
 -GitHub
+
 ----------------------------------------------------------------------------------------------------------------------------------
 📂 Project Structure
 
@@ -102,6 +108,7 @@ restaurant-website/
 ├── restaurant_orders.json
 ├── README.md
 └── node_modules/
+
 ----------------------------------------------------------------------------------------------------------------------------------
 ⚙️ Installation & Setup
 
@@ -122,6 +129,7 @@ restaurant-website/
 **Place a Test Order
 --Fill the order form
 --Order will be saved to restaurant_orders.json
+
 ----------------------------------------------------------------------------------------------------------------------------------
 🎯 Key Highlights
 
@@ -142,6 +150,7 @@ restaurant-website/
 -Real-Time Order Confirmation
 
 -Complete Customer Data Ownership
+
 ----------------------------------------------------------------------------------------------------------------------------------
 🔮 Future Enhancements
 
@@ -164,13 +173,16 @@ restaurant-website/
 -Loyalty Program – Points system and rewards
 
 -Mobile App – React Native with push notifications
+
 ----------------------------------------------------------------------------------------------------------------------------------
 👨‍💻 Developer
 
 Developed as a full-stack web application project to demonstrate backend development, API design, database integration, deployment workflows, and modern software engineering practices.
+
 ----------------------------------------------------------------------------------------------------------------------------------
 📄 License
 
 This project is intended for educational, learning, and portfolio purposes.
+
 ----------------------------------------------------------------------------------------------------------------------------------
 
